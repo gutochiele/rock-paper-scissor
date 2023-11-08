@@ -1,10 +1,11 @@
+function game(playRound) {
 const computerChoices = ["ROCK", "PAPER", "SCISSORS"];
 
 function getComputerChoice(list) {
     return list[Math.floor((Math.random()*list.length))];
 }
 
-let answer = "scissors"
+let answer = prompt("Rock, paper or Scissors?\nChose wisely:");
 const playerSelection = answer.toUpperCase()
 
 const computerSelection = getComputerChoice(computerChoices)
@@ -29,5 +30,8 @@ function playRound(playerSelection, computerSelection) {
     }
         
 }
+    playRound(playerSelection, computerSelection) 
+    }
 
-playRound(playerSelection, computerSelection)
+    for (let i = 0; i < 5; i++)
+    game();
