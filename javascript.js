@@ -3,6 +3,26 @@ let playerPoints = 0;
 let computerPoints = 0;
 let round = 0;
 
+//CREATES A FUNCTION THAT PLAYS EACH ROUND AND SETS THE GAME RULES
+function playRound(playerSelec, compSelec) {
+   if (playerSelec === compSelec){
+      return console.log("It's a draw."), round++;
+
+   } else if ((playerSelec === "ROCK" && compSelec === "PAPER")
+            || (playerSelec === "PAPER" && compSelec === "SCISSORS")
+            || (playerSelec === "SCISSORS" && compSelec === "ROCK")){
+         return console.log(compSelec + " beats " + playerSelec), computerPoints++, round++;
+            
+   } else if ((playerSelec === "ROCK" && compSelec === "SCISSORS") 
+            || (playerSelec === "PAPER" && compSelec === "ROCK")
+            || (playerSelec === "SCISSORS" && compSelec === "PAPER")){
+         return console.log(playerSelec + " beats " + compSelec), playerPoints++, round++;
+         
+   } else {
+      return console.log("I did't understand that, try again");
+   }
+};
+
 //CREATE THE GAME FUNC AND LOOPS IT FOR 5 ROUNDS
 function game() {
    for ( ; round < 5; ){
@@ -23,27 +43,8 @@ function game() {
    console.log("You play: " + playerSelec);
    console.log("Computer plays: " + compSelec);
 
-   //CREATES A FUNCTION THAT PLAYS EACH ROUND AND SETS THE GAME RULES
-   function playRound(playerSelec, compSelec) {
-      if (playerSelec === compSelec){
-         return console.log("It's a draw."), round++;
-
-      } else if ((playerSelec === "ROCK" && compSelec === "PAPER")
-               || (playerSelec === "PAPER" && compSelec === "SCISSORS")
-               || (playerSelec === "SCISSORS" && compSelec === "ROCK")){
-            return console.log(compSelec + " beats " + playerSelec), computerPoints++, round++;
-            
-      } else if ((playerSelec === "ROCK" && compSelec === "SCISSORS") 
-               || (playerSelec === "PAPER" && compSelec === "ROCK")
-               || (playerSelec === "SCISSORS" && compSelec === "PAPER")){
-            return console.log(playerSelec + " beats " + compSelec), playerPoints++, round++;
-            
-      } else {
-         return console.log("I did't understand that, try again");
-      }
-   };  
+  
    //CALLS THE playRound FUNC TO START INSIDE THE game FUNC
-   
    playRound(playerSelec, compSelec);
    console.log("------------------");
    };
