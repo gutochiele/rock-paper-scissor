@@ -22,8 +22,6 @@ function game() {
    console.log("You play: " + playerSelec)
    console.log("Computer plays: " + compSelec)
 
-   let line = "-----------------"
-
    //CREATES A FUNCTION THAT PLAYS EACH ROUND AND SETS THE GAME RULES
    function playRound(playerSelec, compSelec) {
       if (playerSelec === compSelec){
@@ -46,7 +44,7 @@ function game() {
    //CALLS THE playRound FUNC TO START INSIDE THE game FUNC
    
    playRound(playerSelec, compSelec)
-   console.log(line)
+   console.log("------------------")
    }
 }
    
