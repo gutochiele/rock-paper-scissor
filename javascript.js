@@ -1,55 +1,65 @@
+//SET BASIC PARAMETERS 
 let playerPoints = 0
 let computerPoints = 0
 let round = 0
 
-function game(playRound) {
+//CREATE THE GAME FUNC AND LOOPS IT FOR 5 ROUNDS
+function game() {
+   for ( ; round < 5; ){
 
-const computerChoices = ["ROCK", "PAPER", "SCISSORS"];
+   //GETS RANDOM INPUT FROM THE COMPUTER
+   const computerChoices = ["ROCK", "PAPER", "SCISSORS"];
+   function getComputerChoice(list) {
+   return list[Math.floor((Math.random()*list.length))];
+   }
+   compSelec = getComputerChoice(computerChoices)
 
-function getComputerChoice(list) {
- return list[Math.floor((Math.random()*list.length))];
+   //GETS CASE INSENSITIVE INPUT FROM THE PLAYER
+   let playerSelec = prompt("Rock, paper or Scissors?\nChose wisely:");
+   playerSelec = playerSelec.toUpperCase()
+
+   //PRINTS SELECTED INPUT FROM BOTH PLAYERS
+   console.log("You play: " + playerSelec)
+   console.log("Computer plays: " + compSelec)
+
+   let line = "-----------------"
+
+   //CREATES A FUNCTION THAT PLAYS EACH ROUND AND SETS THE GAME RULES
+   function playRound(playerSelec, compSelec) {
+      if (playerSelec === compSelec){
+         return console.log("It's a draw."), round++
+
+      } else if ((playerSelec === "ROCK" && compSelec === "PAPER") 
+               || (playerSelec === "PAPER" && compSelec === "SCISSORS") 
+               || (playerSelec === "SCISSORS" && compSelec === "ROCK")){
+            return console.log(compSelec + " beats " + playerSelec), computerPoints++, round++
+            
+      } else if ((playerSelec === "ROCK" && compSelec === "SCISSORS") 
+               || (playerSelec === "PAPER" && compSelec === "ROCK")
+               || (playerSelec === "SCISSORS" && compSelec === "PAPER")){
+            return console.log(playerSelec + " beats " + compSelec), playerPoints++, round++
+            
+      } else {
+         return console.log("I did't understand that, try again")
+      }
+   }  
+   //CALLS THE playRound FUNC TO START INSIDE THE game FUNC
+   
+   playRound(playerSelec, compSelec)
+   console.log(line)
+   }
 }
-
-let answer = prompt("Rock, paper or Scissors?\nChose wisely:");
-const playerSelection = answer.toUpperCase()
-
-const computerSelection = getComputerChoice(computerChoices)
-
-console.log("You play: " + playerSelection)
-console.log("Computer plays: " + computerSelection)
-
-function playRound(playerSelection, computerSelection) {
- if (playerSelection === computerSelection){
-     return console.log("It's a draw!\n---------------"), round++
-
- } else if ((playerSelection === "ROCK" && computerSelection === "PAPER") 
-         || (playerSelection === "PAPER" && computerSelection === "SCISSORS") 
-         || (playerSelection === "SCISSORS" && computerSelection === "ROCK")){
-        return console.log(computerSelection + " beats " + playerSelection + "\n---------------"), computerPoints++, round++
-        
-
- } else if ((playerSelection === "ROCK" && computerSelection === "SCISSORS") 
-         || (playerSelection === "PAPER" && computerSelection === "ROCK")
-         || (playerSelection === "SCISSORS" && computerSelection === "PAPER")){
-        return console.log(playerSelection + " beats " + computerSelection + "\n---------------"), playerPoints++, round++
-       
-
- } else {
-     return console.log("Wrong choice, try again\n---------------")
- }
-
-}
- playRound(playerSelection, computerSelection)
- }
-
- for (i= 0; i< 5; i++)
+   
+//CALLS FOR THE GAME FUNCTION TO START
  game()
+
+ //DISPLAYS SCORE AND GAME STATS BY THE END OF THE MATCH
  console.log("Round: " + round + "\nScore: Player " + playerPoints + " x " + computerPoints + " Computer")
  if (playerPoints > computerPoints){
-    console.log("You WIN!")
+    console.log("You WIN! :D")
  } else if (playerPoints < computerPoints){
-    console.log("You lose!")
+    console.log("You lost! :(")
  } else if (playerPoints == computerPoints){
-    console.log("It's a draw")
+    console.log("It's a draw!")
  }
  console.log("Press F5 to play again.")
