@@ -36,7 +36,7 @@ function game() {
    compSelec = getComputerChoice(computerChoices);
 
    //GETS CASE INSENSITIVE INPUT FROM THE PLAYER
-   let playerSelec = prompt("Rock, paper or Scissors?\nChose wisely:");
+   let playerSelec = prompt("Rock, paper or scissors?\nChose wisely:");
    playerSelec = playerSelec.toUpperCase();
 
    //PRINTS SELECTED INPUT FROM BOTH PLAYERS
@@ -46,6 +46,7 @@ function game() {
   
    //CALLS THE playRound FUNC TO START INSIDE THE game FUNC
    playRound(playerSelec, compSelec);
+   console.log("Round: " + round)
    console.log("------------------");
    };
 };
@@ -54,7 +55,7 @@ function game() {
  game();
 
  //DISPLAYS SCORE AND GAME STATS BY THE END OF THE MATCH
- console.log("Round: " + round + "\nScore: Player " + playerPoints + " x " + computerPoints + " Computer");
+ console.log("Score: Player " + playerPoints + " x " + computerPoints + " Computer");
  if (playerPoints > computerPoints){
     console.log("You WIN! :D")
  } else if (playerPoints < computerPoints){
